@@ -20,16 +20,16 @@ def ordenamiento_burbuja(lista):
                 lista[j], lista[j+1] = lista[j+1], lista[j]
     return lista
 
-def ordenamiento_burbuja_corto(lista):
-    intercambiado = True
-    num_pasadas = len(lista)-1
-    while num_pasadas > 0 and intercambiado:
-        intercambiado = False
-        for j in range(num_pasadas):
-            if lista[j] > lista[j+1]:
-                lista[j], lista[j+1] = lista[j+1], lista[j]
-                intercambiado = True
-        num_pasadas -= 1
+#def ordenamiento_burbuja_corto(lista):
+#    intercambiado = True
+#    num_pasadas = len(lista)-1
+#    while num_pasadas > 0 and intercambiado:
+#        intercambiado = False
+#        for j in range(num_pasadas):
+#            if lista[j] > lista[j+1]:
+#                lista[j], lista[j+1] = lista[j+1], lista[j]
+#                intercambiado = True
+#        num_pasadas -= 1
 
 if __name__ == '__main__':
     # ordena numeros y palabras
