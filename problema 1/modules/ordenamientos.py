@@ -1,6 +1,7 @@
 
 from random import randint
-# -*- coding: utf-8 -*-
+
+############     ORDENAMIENTO BURBUJA        ####################
 def ordenamiento_burbuja(unaLista):
     n = len(unaLista)
     for i in range(n - 1):
@@ -18,6 +19,8 @@ def ordenamiento_burbuja(unaLista):
      #           unaLista[i] = unaLista[i+1]#Esta línea reemplaza el valor del elemento actual (unaLista[i]) con el valor del elemento siguiente (unaLista[i+1]).
       #          unaLista[i+1] = temp# Esta línea reemplaza el valor del elemento siguiente (unaLista[i+1]) con el valor que se guardó previamente en la variable temporal temp (que era el valor original del elemento actual). Estas tres últimas líneas (temp = ..., unaLista[i] = ..., unaLista[i+1] = ...) realizan el intercambio de los dos elementos adyacentes.
 
+
+############     ORDENAMIENTO RADIX SORT        ####################
 def obtener_digito(numero, posicion_digito, base = 10):
     """
     Obtiene el dígito en la posición especificada (de derecha a izquierda) de un número.
@@ -57,6 +60,9 @@ def ordenamiento_radix(lista):
  
     return lista
 
+
+
+############     ORDENAMIENTO RAPIDO        ####################
 def ordenamientoRapido(unaLista):  #definimos la funcion
    ordenamientoRapidoAuxiliar(unaLista, 0, len(unaLista)-1) #Llama a una función auxiliar llamada ordenamientoRapidoAuxiliar. Le pasa la lista (unaLista), el índice del primer elemento (0), y el índice del último elemento (len(unaLista)-1). Esta función auxiliar es la que realmente implementa la lógica recursiva del Quicksort.
 def ordenamientoRapidoAuxiliar(unaLista,primero,ultimo): #Define la función auxiliar ordenamientoRapidoAuxiliar que toma tres argumentos
