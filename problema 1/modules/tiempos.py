@@ -1,29 +1,27 @@
 from random import randint
 import time
 import matplotlib.pyplot as plt
-
-from ordenamientos import ordenamiento_burbuja , ordenamientoRapido, ordenamiento_radix
-
+import ordenamiento_por_seleccion
 
 def medir_tiempos(metodo_ord, tamanos):
-    tiempos = []
+    tiempos_ord_selecc = []
+
     for n in tamanos:
+        # datos = []
+        # for _ in range(n):
+        #     datos.append(randint(1, 10000))
         datos = [randint(1, 10000) for _ in range(n)]
+
         inicio = time.perf_counter()
-        metodo_ord(datos[:]) # Pasa una copia para no modificar la original
+        metodo_ord(datos)
         fin = time.perf_counter()
-        tiempos.append(fin - inicio)
-        print(f"Tiempo para n={n}: {fin - inicio:.6f} segundos")
-    return tiempos
+        tiempos_ord_selecc.append(fin - inicio)
+        
+        print(f"Tiempo de ordenamiento por seleccion para n={n}: {fin - inicio:.6f} segundos")
+    
+    return tiempos_ord_selecc
 
 if __name__ == '__main__':
     tamanos = [1, 10, 100, 200, 500, 700, 1000]
-
-    tiempos_burbuja = medir_tiempos(ordenamiento_burbuja, tamanos)
-    tiempos_radix = medir_tiempos(ordenamiento_radix, tamanos)
-    tiempos_rapido = medir_tiempos(ordenamientoRapido, tamanos)
-
+    medir_tiempos(ordenamiento_por_seleccion.ordenamiento_por_seleccion,tamanos)
     
-    print("\nTiempos de ordenamiento burbuja:", tiempos_burbuja)
-    print("Tiempos de ordenamiento radix:", tiempos_radix)
-    print("Tiempos de ordenamiento rapido:", tiempos_rapido)

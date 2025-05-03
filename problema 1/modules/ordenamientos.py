@@ -63,7 +63,7 @@ def ordenamiento_radix(lista):
 
 
 ############     ORDENAMIENTO RAPIDO        ####################
-def ordenamientoRapido(unaLista):  #definimos la funcion
+def ordenamiento_rapido(unaLista):  #definimos la funcion
    ordenamientoRapidoAuxiliar(unaLista, 0, len(unaLista)-1) #Llama a una función auxiliar llamada ordenamientoRapidoAuxiliar. Le pasa la lista (unaLista), el índice del primer elemento (0), y el índice del último elemento (len(unaLista)-1). Esta función auxiliar es la que realmente implementa la lógica recursiva del Quicksort.
 def ordenamientoRapidoAuxiliar(unaLista,primero,ultimo): #Define la función auxiliar ordenamientoRapidoAuxiliar que toma tres argumentos
    if primero<ultimo: #Esta es la condición base para la recursión. Si el índice del primer elemento (primero) es menor que el índice del último elemento (ultimo), significa que la sublista tiene al menos dos elementos y necesita ser ordenada. Si primero es igual o mayor que ultimo, la sublista tiene cero o un elemento, que ya está ordenado.
