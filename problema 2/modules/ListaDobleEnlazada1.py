@@ -1,0 +1,152 @@
+class Nodo: 
+   
+    def __init__(self, item):
+        self.item = item #  item: El dato almacenado en el nodo.
+        self.siguiente = None # siguiente: Referencia al siguiente nodo en la lista,puede ser None
+        self.anterior = None # anterior: Referencia al nodo anterior en la lista,puede ser None
+
+class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
+    def __init__(self):
+        self.primero = None # primero: Referencia al primer nodo de la lista None si la lista esta vacia
+        self.ultimo = None #ultimo: Referencia al último nodo de la lista None si la lista esta vacia
+        self.tamano = 0 #tamano: El número de elementos en la lista
+
+    def esta_vacia(self): # Verifica si la lista esta vacia
+            return self.tamano == 0 #bool: True si la lista no contiene elementos, False en caso contrario.
+
+    def __len__(self): # Devuelve el numero de elementos de la lista 
+     
+        return self.tamano
+
+    def agregar_al_inicio(self, item):
+       
+        nuevo_nodo = Nodo(item)
+        if self.esta_vacia():
+            self.primero = self.ultimo = nuevo_nodo
+        else:
+            nuevo_nodo.siguiente = self.primero
+            self.primero.anterior = nuevo_nodo
+            self.primero = nuevo_nodo
+        self.tamano += 1
+
+    def agregar_al_final(self, item):
+       
+        nuevo_nodo = Nodo(item)
+        if self.esta_vacia():
+            self.primero = self.ultimo = nuevo_nodo
+        else:
+            nuevo_nodo.anterior = self.ultimo
+            self.ultimo.siguiente = nuevo_nodo
+            self.ultimo = nuevo_nodo
+        self.tamano += 1
+
+    def insertar(self, item, posicion=None): # agregamos un elemento en una posicion especifica de la lista, si la posicion es None agrega al final
+       
+            #item: El dato a insertar. posicion (int, optional): La posición donde insertar el elemento (comenzando desde 0). Defaults to None.       
+            #IndexError: Si la posición es inválida.
+        
+        if posicion is None:
+            self.agregar_al_final(item)
+            return
+
+        if posicion < 0 or posicion > self.tamano:
+            raise IndexError("Posicion invalida")
+
+        nuevo_nodo = Nodo(item)
+        if posicion == 0:
+            self.agregar_al_inicio(item)
+        elif posicion == self.tamano:
+            self.agregar_al_final(item)
+        else:
+            nodo_actual = self.primero
+            for _ in range(posicion):
+                nodo_actual = nodo_actual.siguiente
+            nuevo_nodo.anterior = nodo_actual.anterior
+            nuevo_nodo.siguiente = nodo_actual
+            nodo_actual.anterior.siguiente = nuevo_nodo
+            nodo_actual.anterior = nuevo_nodo
+            self.tamano += 1
+
+    def extraer(self, posicion=None): #Remueve y retorna el elemento de una posición específica de la lista.Si la posición es None, se extrae el último elemento.
+                                      #La posición del elemento a extraer (comenzando desde 0). IndexError: Si la lista está vacía o la posición es inválida.      
+       
+        if self.esta_vacia():
+            raise IndexError("La lista está vacía")
+
+        if posicion is None:
+            posicion = self.tamano - 1
+
+        if posicion < 0 or posicion >= self.tamano:
+            raise IndexError("Posición inválida")
+
+        if posicion == 0:
+            item = self.primero.item
+            self.primero = self.primero.siguiente
+            if self.primero:
+                self.primero.anterior = None
+            else:
+                self.ultimo = None
+        elif posicion == self.tamano - 1:
+            item = self.ultimo.item
+            self.ultimo = self.ultimo.anterior
+            if self.ultimo:
+                self.ultimo.siguiente = None
+            else:
+                self.primero = None
+        else:
+            nodo_actual = self.primero
+            for _ in range(posicion):
+                nodo_actual = nodo_actual.siguiente
+            item = nodo_actual.item
+            nodo_actual.anterior.siguiente = nodo_actual.siguiente
+            nodo_actual.siguiente.anterior = nodo_actual.anterior
+
+        self.tamano -= 1
+        return item
+
+    def copiar(self): #Crea y retorna una copia superficial de la lista doble enlazada.
+      
+        nueva_lista = ListaDobleEnlazada()
+        nodo_actual = self.primero
+        while nodo_actual is not None:
+            nueva_lista.agregar_al_final(nodo_actual.item)
+            nodo_actual = nodo_actual.siguiente
+        return nueva_lista
+
+    def invertir(self): # Invierte el orden de los elementos en la lista doble enlazada
+       
+        if self.esta_vacia():
+            return
+
+        nodo_actual = self.primero
+        temp = None
+        self.ultimo = nodo_actual
+
+        while nodo_actual is not None:
+            temp = nodo_actual.anterior
+            nodo_actual.anterior = nodo_actual.siguiente
+            nodo_actual.siguiente = temp
+            nodo_actual = nodo_actual.anterior
+
+        if temp is not None:
+            self.primero = temp.anterior
+
+    def concatenar(self, otra_lista): #Concatena otra lista doble enlazada al final de la lista actual
+        
+        if not isinstance(otra_lista, ListaDobleEnlazada):
+            raise TypeError("El argumento debe ser una ListaDobleEnlazada")
+
+        nodo_actual = otra_lista.primero
+        while nodo_actual is not None:
+            self.agregar_al_final(nodo_actual.item)
+            nodo_actual = nodo_actual.siguiente
+
+    def __add__(self, otra_lista): #Implementa el operador de suma (+) para concatenar dos listas dobles enlazadas
+       
+        nueva_lista = self.copiar()
+        nueva_lista.concatenar(otra_lista)
+        return nueva_lista
+
+
+
+
