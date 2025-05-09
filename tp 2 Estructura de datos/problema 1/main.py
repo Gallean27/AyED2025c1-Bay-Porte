@@ -3,6 +3,7 @@
 Sala de emergencias
 """
 
+
 import time
 import datetime
 from modules import paciente as pac
