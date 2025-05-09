@@ -9,7 +9,7 @@ from mazo import Mazo, DequeEmptyError
 from carta import Carta
 import random
 
-N_TURNOS = 10000
+N_TURNOS = 10
 
 
 class JuegoGuerra:
