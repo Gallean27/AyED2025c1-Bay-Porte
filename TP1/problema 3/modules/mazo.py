@@ -1,6 +1,6 @@
 # mazo.py
-from ListaDobleEnlazada import ListaDobleEnlazada  # Importa la clase ListaDobleEnlazada
-from carta import Carta 
+from modules.ListaDobleEnlazada import ListaDobleEnlazada  # Importa la clase ListaDobleEnlazada
+from modules.carta import Carta 
 class DequeEmptyError(Exception):
     pass  # Define una excepción personalizada para cuando el mazo está vacío
 
@@ -13,7 +13,7 @@ class Mazo:
         self.mazo = ListaDobleEnlazada() #
         self.carta = self
     def __len__(self): # devuekvo la cantidad de cartas que hay en el mazo
-        return self.mazo.tamano
+        return self.mazo.tamanio
     def poner_carta_abajo(self, nueva_carta):
         if type(nueva_carta) != Carta:
             raise TypeError("El elemento a agregar debe ser una carta")

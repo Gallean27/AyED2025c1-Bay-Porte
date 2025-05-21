@@ -5,11 +5,11 @@ Created on Thu Aug 11 09:32:57 2022
 @author: Cátedra de Algoritmos y Estructura de Datos
 """
 
-from mazo import Mazo, DequeEmptyError
-from carta import Carta
+from modules.mazo import Mazo, DequeEmptyError
+from modules.carta import Carta
 import random
 
-N_TURNOS = 10
+N_TURNOS = 10000
 
 
 class JuegoGuerra:
@@ -55,8 +55,8 @@ class JuegoGuerra:
         
     @property
     def turnos_jugados(self):
-        if self.empate:
-            return N_TURNOS
+       # if self.empate:
+        #    return N_TURNOS
         return self._turno + 1
            
     @property
