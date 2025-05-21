@@ -7,8 +7,8 @@ class Nodo:
 
 class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
     def __init__(self):
-        self.primero = None # primero: Referencia al primer nodo de la lista None si la lista esta vacia
-        self.ultimo = None #ultimo: Referencia al último nodo de la lista None si la lista esta vacia
+        self.cabeza = None # primero: Referencia al primer nodo de la lista None si la lista esta vacia
+        self.cola = None #ultimo: Referencia al último nodo de la lista None si la lista esta vacia
         self.tamano = 0 #tamano: El número de elementos en la lista
 
     def esta_vacia(self): # Verifica si la lista esta vacia
@@ -22,22 +22,22 @@ class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
        
         nuevo_nodo = Nodo(item)
         if self.esta_vacia():
-            self.primero = self.ultimo = nuevo_nodo
+            self.cabeza = self.cola = nuevo_nodo
         else:
-            nuevo_nodo.siguiente = self.primero
-            self.primero.anterior = nuevo_nodo
-            self.primero = nuevo_nodo
+            nuevo_nodo.siguiente = self.cabeza
+            self.cabeza.anterior = nuevo_nodo
+            self.cabeza = nuevo_nodo
         self.tamano += 1
 
     def agregar_al_final(self, item):
        
         nuevo_nodo = Nodo(item)
         if self.esta_vacia():
-            self.primero = self.ultimo = nuevo_nodo
+            self.cabeza = self.cola = nuevo_nodo
         else:
-            nuevo_nodo.anterior = self.ultimo
-            self.ultimo.siguiente = nuevo_nodo
-            self.ultimo = nuevo_nodo
+            nuevo_nodo.anterior = self.cola
+            self.cola.siguiente = nuevo_nodo
+            self.cola = nuevo_nodo
         self.tamano += 1
 
     def insertar(self, item, posicion=None): # agregamos un elemento en una posicion especifica de la lista, si la posicion es None agrega al final
@@ -58,7 +58,7 @@ class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
         elif posicion == self.tamano:
             self.agregar_al_final(item)
         else:
-            nodo_actual = self.primero
+            nodo_actual = self.cabeza
             for _ in range(posicion):
                 nodo_actual = nodo_actual.siguiente
             nuevo_nodo.anterior = nodo_actual.anterior
@@ -80,24 +80,24 @@ class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
             raise IndexError("Posición inválida")
 
         if posicion == 0:
-            item = self.primero.item
-            self.primero = self.primero.siguiente
-            if self.primero:
-                self.primero.anterior = None
+            item = self.cabeza.dato
+            self.cabeza = self.cabeza.siguiente
+            if self.cabeza:
+                self.cabeza.anterior = None
             else:
-                self.ultimo = None
+                self.cola = None
         elif posicion == self.tamano - 1:
-            item = self.ultimo.item
-            self.ultimo = self.ultimo.anterior
-            if self.ultimo:
-                self.ultimo.siguiente = None
+            item = self.cola.dato
+            self.cola = self.cola.anterior
+            if self.cola:
+                self.cola.siguiente = None
             else:
-                self.primero = None
+                self.cabeza = None
         else:
-            nodo_actual = self.primero
+            nodo_actual = self.cabeza
             for _ in range(posicion):
                 nodo_actual = nodo_actual.siguiente
-            item = nodo_actual.item
+            item = nodo_actual.dato
             nodo_actual.anterior.siguiente = nodo_actual.siguiente
             nodo_actual.siguiente.anterior = nodo_actual.anterior
 
@@ -107,7 +107,7 @@ class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
     def copiar(self): #Crea y retorna una copia superficial de la lista doble enlazada.
       
         nueva_lista = ListaDobleEnlazada()
-        nodo_actual = self.primero
+        nodo_actual = self.cabeza
         while nodo_actual is not None:
             nueva_lista.agregar_al_final(nodo_actual.item)
             nodo_actual = nodo_actual.siguiente
@@ -118,9 +118,9 @@ class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
         if self.esta_vacia():
             return
 
-        nodo_actual = self.primero
+        nodo_actual = self.cabeza
         temp = None
-        self.ultimo = nodo_actual
+        self.cola = nodo_actual
 
         while nodo_actual is not None:
             temp = nodo_actual.anterior
@@ -129,14 +129,14 @@ class ListaDobleEnlazada: # Implementacion de una lista doble enlazada
             nodo_actual = nodo_actual.anterior
 
         if temp is not None:
-            self.primero = temp.anterior
+            self.cabeza = temp.anterior
 
     def concatenar(self, otra_lista): #Concatena otra lista doble enlazada al final de la lista actual
         
         if not isinstance(otra_lista, ListaDobleEnlazada):
             raise TypeError("El argumento debe ser una ListaDobleEnlazada")
 
-        nodo_actual = otra_lista.primero
+        nodo_actual = otra_lista.cabeza
         while nodo_actual is not None:
             self.agregar_al_final(nodo_actual.item)
             nodo_actual = nodo_actual.siguiente
