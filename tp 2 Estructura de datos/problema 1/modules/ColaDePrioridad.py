@@ -7,8 +7,8 @@ class ColaDePrioridad:
     def _intercambiar(self, i, j):
         self._monticulo[i], self._monticulo[j] = self._monticulo[j], self._monticulo[i]
 
-    def _subir(self, indice):
-        # Mueve el elemento hacia arriba en el monticulo si es menor que su padre
+    def _subir(self, indice): # Mueve el elemento hacia arriba en el monticulo si es menor que su padre
+        
         while indice > 0:
             padre_indice = (indice - 1) // 2
             # El criterio de prioridad: (riesgo, orden_llegada)

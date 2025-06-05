@@ -15,15 +15,15 @@ cola_de_espera = cp.ColaDePrioridad() # ¡Cambiamos a nuestra ColaDePrioridad!
 
 # Ciclo que gestiona la simulación
 for i in range(n):
-    # Fecha y hora de entrada de un paciente
-    ahora = datetime.datetime.now()
-    fecha_y_hora = ahora.strftime('%d/%m/%Y %H:%M:%S')
+   
+    ahora = datetime.datetime.now()  
+    fecha_y_hora = ahora.strftime('%d/%m/%Y %H:%M:%S') # Fecha y hora de entrada de un paciente
     print('-*-'*15)
     print('\n', fecha_y_hora, '\n')
 
-    # Se crea un paciente un paciente por segundo
-    # La criticidad del paciente es aleatoria
-    paciente = pac.Paciente()
+    
+    
+    paciente = pac.Paciente() # Se crea un paciente un paciente por segundo.La criticidad del paciente es aleatoria
     # Insertar el paciente en la cola de prioridad junto con su ID de llegada
     cola_de_espera.insertar(paciente, paciente.get_id_llegada())
 
