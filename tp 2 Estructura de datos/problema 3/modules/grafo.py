@@ -1,7 +1,7 @@
 # modules/grafo.py
 
 import heapq
-from vertice import Vertice # Importa la clase Vertice desde el mismo paquete
+from .vertice import Vertice # Importa la clase Vertice desde el mismo paquete
 
 class Grafo:
     """

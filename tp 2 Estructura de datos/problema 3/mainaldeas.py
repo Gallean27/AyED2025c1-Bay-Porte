@@ -1,7 +1,7 @@
 # main_aldeas.py
 
 import os
-from modules.grafo import Grafo # Importa la clase Grafo del paquete modules
+from modules.grafo import Grafo # Importa la clase Grafo 
 import heapq # Se mantiene aquí porque resolver_problema_aldeas lo usa directamente
 
 def resolver_problema_aldeas(contenido_archivo, aldea_origen="Peligros"):
@@ -123,11 +123,11 @@ if __name__ == "__main__":
 
     print("\n### Ruta más Eficiente de Peligros a todas las Aldeas:")
     print("| Aldea Receptora | Recibe de | Envía réplicas a |")
-    print("| :-------------- | :-------- | :---------------- |")
+    print("| :---------------------- | :--------------------- | :------------------------ |")
     for aldea in aldeas_ordenadas_result:
         recibe_de = detalles_entrega_result[aldea]["recibe_de"] if detalles_entrega_result[aldea]["recibe_de"] != "ORIGEN" else ""
         envia_a = ", ".join(sorted(detalles_entrega_result[aldea]["envia_a"]))
-        print(f"| {aldea} | {recibe_de} | {envia_a} |")
+        print(f"||||||||||| {aldea} |||||||||||| {recibe_de} |||||||||||| {envia_a} ||||||||||||")
 
     print(f"\n### Suma Total de Distancias Recorridas:")
     print(f"La suma de todas las distancias recorridas por todas las palomas enviadas para entregar el mensaje a todas las aldeas de la forma más eficiente es de **{distancia_total_result} leguas**.")
