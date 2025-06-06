@@ -122,7 +122,7 @@ if __name__ == "__main__":
         print(f"* {aldea}")
 
     print("\n### Ruta más Eficiente de Peligros a todas las Aldeas:")
-    print("| Aldea Receptora | Recibe de | Envía réplicas a |")
+    print("|      Aldea Receptora    |        Recibe de    |          Envía réplicas a |")
     print("| :---------------------- | :--------------------- | :------------------------ |")
     for aldea in aldeas_ordenadas_result:
         recibe_de = detalles_entrega_result[aldea]["recibe_de"] if detalles_entrega_result[aldea]["recibe_de"] != "ORIGEN" else ""
