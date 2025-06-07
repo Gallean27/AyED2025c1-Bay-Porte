@@ -2,11 +2,10 @@
 import datetime
 
 from ArbolAVL import ArbolAVL
-# --- Clase NodoAVL (se mantiene igual) ---
 
 ## Clase Temperaturas_DB
 
-#Ahora, `Temperaturas_DB` instanciará un ArbolAVL y usará sus métodos internos para realizar las operaciones de la base de datos, manejando la conversión de fechas.
+#`Temperaturas_DB` instanciará un ArbolAVL y usará sus métodos internos para realizar las operaciones, manejando la conversión de fechas.
 
 #```python
 class Temperaturas_DB:

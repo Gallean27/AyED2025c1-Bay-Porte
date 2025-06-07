@@ -1,14 +1,14 @@
 import datetime
-from Temperaturas_db import Temperaturas_DB 
-from ArbolAVL import NodoAVL
-from ArbolAVL import ArbolAVL
+from modules.Temperaturas_db import Temperaturas_DB
+from modules.ArbolAVL import NodoAVL
+from modules.ArbolAVL import ArbolAVL
 
 # --- INICIO DEL CÓDIGO DE PRUEBA ---
 def probar_temperaturas_db():
     print("--- Probando Temperaturas_DB ---")
     db = Temperaturas_DB()
 
-    # 1. Guardar temperaturas con 6 fechas consecutivas
+    # 1. Guardar temperaturas con 6 fechas consecutivas, como vimos en la practica para probar
     print("\n--- Guardando temperaturas con 6 fechas consecutivas ---")
     start_date = datetime.datetime(2023, 3, 1)
     for i in range(6):
