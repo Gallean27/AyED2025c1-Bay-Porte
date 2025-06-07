@@ -5,20 +5,7 @@ from modules.grafo import Grafo # Importa la clase Grafo
 import heapq # Se mantiene aquí porque resolver_problema_aldeas lo usa directamente
 
 def resolver_problema_aldeas(contenido_archivo, aldea_origen="Peligros"):
-    """
-    Resuelve el problema de la entrega de mensajes de William desde la aldea de origen
-    a todas las demás aldeas de la forma más eficiente (costo mínimo total).
-
-    Args:
-        contenido_archivo (str): El contenido del archivo de datos de aldeas.
-        aldea_origen (str): El nombre de la aldea desde la que se inician los envíos.
-
-    Returns:
-        tuple: Una tupla que contiene:
-            - list: Lista de aldeas en orden alfabético.
-            - dict: Información de entrega (de quién recibe y a quién envía réplicas).
-            - int: Suma total de las distancias recorridas.
-    """
+    
     mi_grafo = Grafo()
     todas_las_aldeas = set()
 
@@ -36,13 +23,13 @@ def resolver_problema_aldeas(contenido_archivo, aldea_origen="Peligros"):
             todas_las_aldeas.add(destino_clave)
         elif len(partes) == 1:
             # Solo un nombre de aldea
-            if partes[0] not in mi_grafo: # Usar el método __contains__ de Grafo
+            if partes[0] not in mi_grafo: # Uso el método __contains__ de Grafo
                 mi_grafo.agregarVertice(partes[0])
             todas_las_aldeas.add(partes[0])
 
     aldeas_ordenadas = sorted(list(todas_las_aldeas))
 
-    # Implementación de Dijkstra
+    # Implementación de Dijkstra visto del libro
     distancias = {vertice_clave: float('infinity') for vertice_clave in mi_grafo.obtenerVertices()}
     aldeas_previas = {vertice_clave: None for vertice_clave in mi_grafo.obtenerVertices()}
     
@@ -101,7 +88,7 @@ def resolver_problema_aldeas(contenido_archivo, aldea_origen="Peligros"):
 # --- Lógica para leer el archivo y ejecutar el programa ---
 if __name__ == "__main__":
     # Construye la ruta al archivo 'aldeas.txt' de forma relativa
-    script_dir = os.path.dirname(__file__) # Directorio donde está main_aldeas.py
+    script_dir = os.path.dirname(__file__) 
     file_path = os.path.join(script_dir, 'docs', 'aldeas.txt')
 
     contenido_aldeas = ""

@@ -7,8 +7,8 @@ class Vertice:
     def __init__(self, clave, carga_util=None):
         """
         Inicializa un nuevo vértice.
-        :param clave: Nombre único del vértice.
-        :param carga_util: Información adicional asociada al vértice.
+        :clave: Nombre único del vértice.
+        :carga_util: Información adicional asociada al vértice.
         """
         self.clave = clave
         self.carga_util = carga_util
@@ -17,8 +17,8 @@ class Vertice:
     def agregarVecino(self, vecino_obj, peso=0):
         """
         Agrega un vecino a este vértice con un peso específico de arista.
-        :param vecino_obj: Objeto Vertice vecino.
-        :param peso: Peso de la arista que conecta a este vértice con el vecino.
+        :vecino_obj: Objeto Vertice vecino.
+        :peso: Peso de la arista que conecta a este vértice con el vecino.
         """
         self.vecinos[vecino_obj] = peso
 
@@ -32,7 +32,7 @@ class Vertice:
     def obtenerPeso(self, vecino_obj):
         """
         Devuelve el peso de la arista que conecta a este vértice con un vecino específico.
-        :param vecino_obj: Objeto Vertice vecino.
+        :vecino_obj: Objeto Vertice vecino.
         :return: Peso de la arista.
         """
         return self.vecinos.get(vecino_obj, None)
@@ -58,8 +58,7 @@ class Vertice:
 
     def __hash__(self):
         """
-        Permite que los objetos Vertice sean usados como claves de diccionario o en sets,
-        basado en su clave.
+        Permite que los objetos Vertice sean usados como claves de diccionario, basado en su clave.
         """
         return hash(self.clave)
 

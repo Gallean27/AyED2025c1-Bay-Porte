@@ -1,7 +1,7 @@
 # modules/grafo.py
 
 import heapq
-from .vertice import Vertice # Importa la clase Vertice desde el mismo paquete
+from .vertice import Vertice # Importa la clase Vertice 
 
 class Grafo:
     """
@@ -17,8 +17,8 @@ class Grafo:
     def agregarVertice(self, clave_vert, carga_util=None):
         """
         Agrega una instancia de Vertice al grafo.
-        :param clave_vert: Clave del nuevo vértice.
-        :param carga_util: Carga útil del nuevo vértice.
+        :clave_vert: Clave del nuevo vértice.
+        :carga_util: Carga útil del nuevo vértice.
         :return: El objeto Vertice creado.
         """
         self.numVertices += 1
@@ -29,7 +29,7 @@ class Grafo:
     def obtenerVertice(self, clave_vert):
         """
         Encuentra el vértice en el grafo con nombre clave_vert.
-        :param clave_vert: Clave del vértice a buscar.
+        :clave_vert: Clave del vértice a buscar.
         :return: Objeto Vertice si existe, None en caso contrario.
         """
         return self.listaVertices.get(clave_vert, None)
@@ -38,9 +38,9 @@ class Grafo:
         """
         Agrega al grafo una nueva arista (bidireccional para este problema)
         que conecta dos vértices. Si los vértices no existen, los crea.
-        :param deVertice_clave: Clave del vértice de origen.
-        :param aVertice_clave: Clave del vértice de destino.
-        :param ponderacion: Ponderación (peso) de la arista.
+        :deVertice_clave: Clave del vértice de origen.
+        :aVertice_clave: Clave del vértice de destino.
+        :ponderacion: Ponderación (peso) de la arista.
         """
         if deVertice_clave not in self.listaVertices:
             self.agregarVertice(deVertice_clave)
